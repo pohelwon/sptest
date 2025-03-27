@@ -1,0 +1,244 @@
+/* Сброс базовых отступов */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Общие стили */
+body {
+  font-family: 'Rubik', sans-serif;
+  background-color: #F8F8F8;
+  color: #333;
+}
+
+/* ШАПКА */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FFF;
+  padding: 0 20px;
+  height: 60px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #F5A623; /* акцентный оранжевый */
+}
+
+.nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.user-panel {
+  display: flex;
+  align-items: center;
+}
+
+.balance {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  font-weight: 500;
+}
+
+.balance .amount {
+  margin: 0 4px;
+}
+
+.profile {
+  margin-right: 15px;
+  cursor: pointer;
+  color: #333;
+}
+
+.burger {
+  display: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* ОСНОВНОЙ КОНТЕЙНЕР */
+.container {
+  display: flex;
+  margin-top: 10px;
+}
+
+/* САЙДБАР */
+.sidebar {
+  width: 250px;
+  background-color: #FFFFFF;
+  padding: 20px;
+  border-right: 1px solid #EEE;
+}
+
+.sidebar h2 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.filter-block {
+  margin-bottom: 20px;
+}
+
+.filter-block p {
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+/* ОСНОВНОЙ КОНТЕНТ */
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Баннер */
+.banner {
+  background: linear-gradient(120deg, #7E57C2, #764AF3);
+  color: #FFF;
+  padding: 40px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.banner h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.banner p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.cta-btn {
+  background-color: #F5A623;
+  border: none;
+  color: #FFF;
+  padding: 10px 20px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Поисковая панель */
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-bar input,
+.search-bar select {
+  padding: 8px;
+  border: 1px solid #CCC;
+  border-radius: 4px;
+  font: inherit;
+}
+
+/* СЕТКА КАРТОЧЕК */
+.items-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+.item-card {
+  background-color: #FFF;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.item-card img {
+  max-width: 100px;
+  margin-bottom: 10px;
+}
+
+.item-card h3 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.tags {
+  margin-bottom: 10px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  margin: 0 4px 4px 0;
+  background-color: #EEE;
+  color: #555;
+}
+
+/* Стили для разных типов бейджей */
+.common { background-color: #E0ECE3; }
+.rare { background-color: #AAD5F8; }
+.ultra-rare { background-color: #D0ADF6; }
+.legendary { background-color: #F9DA8F; }
+.newborn { background-color: #DDDDDD; }
+.neon { background-color: #FC8BBF; }
+.mega { background-color: #FB7AA3; }
+
+.price {
+  font-weight: 500;
+  color: #F5A623; /* оранжевая цена */
+}
+
+/* ПОДВАЛ */
+.footer {
+  background-color: #FFF;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 10px;
+}
+
+/* АДАПТИВНОСТЬ */
+@media (max-width: 992px) {
+  .sidebar {
+    position: fixed;
+    top: 60px; /* Высота шапки */
+    left: -300px;
+    width: 250px;
+    height: calc(100% - 60px);
+    z-index: 999;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transition: left 0.3s ease;
+  }
+
+  .container {
+    margin-top: 0;
+  }
+
+  .burger {
+    display: block;
+  }
+
+  /* Когда сайдбар открыт, задаем left:0 (в script.js) */
+  .sidebar.open {
+    left: 0;
+  }
+  
+  /* Смещаем основной контент вниз, если нужно */
+  .main-content {
+    margin-top: 60px;
+  }
+}

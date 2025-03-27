@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+<div class="auth-container">
+  <div class="auth-header">
+    <h1>StarPets</h1>
+    <p class="auth-subtitle">Добро пожаловать! Пожалуйста, введите ваши данные для входа</p>
+  </div>
+
+  {% if messages %}
+    <div class="auth-messages">
+      {% for msg in messages %}
+        <p class="auth-error">{{ msg }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <form method="POST" class="auth-form">
+    {% csrf_token %}
+    <div class="auth-form-group">
+      <label>Имя пользователя</label>
+      <input type="text" name="username" required>
+    </div>
+
+    <div class="auth-form-group">
+      <label>Пароль</label>
+      <input type="password" name="password" required>
+    </div>
+
+    <button type="submit" class="auth-btn">Войти</button>
+
+    <p class="auth-footer">
+      Нет аккаунта?
+      <a href="{% url 'register' %}">Зарегистрироваться</a>
+    </p>
+  </form>
+</div>
+
+</body>
+</html>

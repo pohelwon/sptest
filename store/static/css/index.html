@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>StarPets Demo</title>
+  <!-- Шрифт Rubik из Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome для иконок (опционально) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <!-- Подключаем стили -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Шапка (header) -->
+  <header class="header">
+    <div class="logo">StarPets</div>
+    <nav class="nav">
+      <a href="#">Market</a>
+      <a href="#">Items</a>
+      <a href="#">Sale</a>
+      <a href="#">Help</a>
+    </nav>
+    <div class="user-panel">
+      <div class="balance">
+        <i class="fa-solid fa-coins"></i> 
+        <span class="amount">2.72</span> 
+        <span class="currency">$</span>
+      </div>
+      <div class="profile">
+        <i class="fa-solid fa-user"></i> 
+        <span>Profile</span>
+      </div>
+      <div class="burger" id="burgerBtn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Контейнер для боковой панели + контента -->
+  <div class="container">
+    <!-- Боковая панель (sidebar) -->
+    <aside class="sidebar" id="sidebar">
+      <h2>Filters</h2>
+
+      <div class="filter-block">
+        <p>Price</p>
+        <label>от <input type="number" min="0"></label>
+        <label>до <input type="number" min="0"></label>
+      </div>
+
+      <div class="filter-block">
+        <p>Rarity</p>
+        <label><input type="checkbox"> Common</label>
+        <label><input type="checkbox"> Rare</label>
+        <label><input type="checkbox"> Ultra-Rare</label>
+        <label><input type="checkbox"> Legendary</label>
+      </div>
+
+      <div class="filter-block">
+        <p>Properties</p>
+        <label><input type="checkbox"> Flyable</label>
+        <label><input type="checkbox"> Neon</label>
+        <label><input type="checkbox"> Mega Neon</label>
+      </div>
+
+      <div class="filter-block">
+        <p>Age</p>
+        <label><input type="checkbox"> Newborn</label>
+        <label><input type="checkbox"> Reborn</label>
+        <label><input type="checkbox"> Full Grown</label>
+      </div>
+    </aside>
+
+    <!-- Основной контент -->
+    <main class="main-content">
+      <!-- Баннер -->
+      <div class="banner">
+        <h1>Find Your Perfect Pet</h1>
+        <p>Discover rare items and adorable pets today!</p>
+        <button class="cta-btn">Explore</button>
+      </div>
+
+      <!-- Поисковая панель (опционально) -->
+      <div class="search-bar">
+        <input type="text" placeholder="Search...">
+        <select>
+          <option>Sort by Popularity</option>
+          <option>Sort by Price (low to high)</option>
+          <option>Sort by Price (high to low)</option>
+        </select>
+      </div>
+
+      <!-- Сетка карточек с товарами -->
+      <div class="items-grid">
+        <div class="item-card">
+          <img src="https://via.placeholder.com/100/EEE?text=Egg" alt="Egg">
+          <h3>Moon Egg</h3>
+          <div class="tags">
+            <span class="badge rare">Rare</span>
+            <span class="badge newborn">Newborn</span>
+          </div>
+          <div class="price">
+            <i class="fa-solid fa-coins"></i> 0.05 $
+          </div>
+        </div>
+
+        <div class="item-card">
+          <img src="https://via.placeholder.com/100/EEE?text=Cow" alt="Cow">
+          <h3>Clover Cow</h3>
+          <div class="tags">
+            <span class="badge legendary">Legendary</span>
+            <span class="badge neon">Neon</span>
+          </div>
+          <div class="price">
+            <i class="fa-solid fa-coins"></i> 0.08 $
+          </div>
+        </div>
+
+        <div class="item-card">
+          <img src="https://via.placeholder.com/100/EEE?text=Potion" alt="Potion">
+          <h3>Ride Potion</h3>
+          <div class="tags">
+            <span class="badge ultra-rare">Ultra-Rare</span>
+          </div>
+          <div class="price">
+            <i class="fa-solid fa-coins"></i> 0.54 $
+          </div>
+        </div>
+
+        <!-- Добавь больше карточек по желанию -->
+      </div>
+    </main>
+  </div>
+
+  <!-- (Опционально) Подвал (footer) -->
+  <footer class="footer">
+    <p>© 2025 StarPets. All rights reserved.</p>
+  </footer>
+
+  <!-- Подключаем скрипты -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Профиль</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+<h1>Личный кабинет</h1>
+
+<p>Привет, {{ user.username }}! Здесь будет твоя информация или история покупок.</p>
+<a href="{% url 'logout' %}">Выйти</a>
+</body>
+</html>

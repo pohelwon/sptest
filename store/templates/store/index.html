@@ -1,0 +1,130 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>StarPets</title>
+  <!-- Подключаем шрифт Rubik, иконки Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <!-- Подключаем наш CSS (styles.css) из static/ -->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <!-- Шапка -->
+  <header class="header">
+    <div class="logo">StarPets Django</div>
+    
+    <!-- Навигация (если нужно) -->
+    <nav class="nav">
+      <a href="#">Market</a>
+      <a href="#">Items</a>
+      <a href="#">Help</a>
+    </nav>
+
+    <!-- Панель пользователя -->
+    <div class="user-panel">
+      {% if user.is_authenticated %}
+        <!-- Если пользователь залогинен, показываем баланс, профиль, logout -->
+        <div class="balance">
+          <i class="fa-solid fa-coins"></i>
+          <span class="amount">2.72</span>
+          <span class="currency">$</span>
+        </div>
+        <div class="profile">
+          <a href="{% url 'profile' %}">
+            <i class="fa-solid fa-user"></i> {{ user.username }}
+          </a>
+        </div>
+        <div>
+          <a href="{% url 'logout' %}">Logout</a>
+        </div>
+      {% else %}
+        <!-- Если НЕ залогинен, кнопка Login / Register -->
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Register</a>
+      {% endif %}
+
+      <!-- Бургер-меню на мобильных -->
+      <div class="burger" id="burgerBtn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Контейнер: sidebar + контент -->
+  <div class="container">
+    <!-- Сайдбар -->
+    <aside class="sidebar" id="sidebar">
+      <h2>Filters</h2>
+
+      <!-- Price range -->
+      <div class="filter-block">
+        <p>Price</p>
+        <label>от <input type="number" min="0" id="priceMin"></label>
+        <label>до <input type="number" min="0" id="priceMax"></label>
+      </div>
+
+      <!-- Rarity -->
+      <div class="filter-block">
+        <p>Rarity</p>
+        <label><input type="checkbox" name="rarity" value="common"> Common</label>
+        <label><input type="checkbox" name="rarity" value="rare"> Rare</label>
+        <label><input type="checkbox" name="rarity" value="ultra-rare"> Ultra-Rare</label>
+        <label><input type="checkbox" name="rarity" value="legendary"> Legendary</label>
+      </div>
+
+      <!-- Properties -->
+      <div class="filter-block">
+        <p>Properties</p>
+        <label><input type="checkbox" name="props" value="flyable"> Flyable</label>
+        <label><input type="checkbox" name="props" value="neon"> Neon</label>
+        <label><input type="checkbox" name="props" value="mega"> Mega Neon</label>
+      </div>
+
+      <!-- Age -->
+      <div class="filter-block">
+        <p>Age</p>
+        <label><input type="checkbox" name="age" value="newborn"> Newborn</label>
+        <label><input type="checkbox" name="age" value="reborn"> Reborn</label>
+        <label><input type="checkbox" name="age" value="full"> Full Grown</label>
+      </div>
+    </aside>
+
+    <!-- Основной контент -->
+    <main class="main-content">
+      <!-- Баннер -->
+      <div class="banner">
+        <h1>Find Your Perfect Pet</h1>
+        <p>Discover rare items and adorable pets today!</p>
+        <button class="cta-btn">Explore</button>
+      </div>
+
+      <!-- Поисковая панель -->
+      <div class="search-bar">
+        <input type="text" placeholder="Search..." id="searchInput">
+        <select id="sortSelect">
+          <option value="popularity">Sort by Popularity</option>
+          <option value="priceAsc">Price (low to high)</option>
+          <option value="priceDesc">Price (high to low)</option>
+        </select>
+      </div>
+
+      <!-- Сетка товаров (динамически будет рендериться JS) -->
+      <div class="items-grid" id="itemsGrid"></div>
+    </main>
+  </div>
+
+  <!-- Футер (опционально) -->
+  <footer class="footer">
+    <p>© 2025 StarPets Django. All rights reserved.</p>
+  </footer>
+
+  <!-- Подключаем script.js -->
+  <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
